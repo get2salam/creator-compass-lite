@@ -7,37 +7,38 @@
     <meta name="description" content="Steer creative projects with visible priorities, friction, and momentum." />
     <link rel="stylesheet" href="./styles/app.css" />
   </head>
-  <body style="--primary:#fb923c;--secondary:#fdba74;--panel:#1a1108;--edge:#5d3512;--glow:rgba(251, 146, 60, 0.22)">
+  <body style="--primary:#c084fc;--secondary:#f472b6;--panel:#170f1f;--edge:#623c7a;--glow:rgba(192, 132, 252, 0.22)">
     <div class="shell">
       <header class="topbar">
         <div>
-          <p class="eyebrow">Local-first micro app</p>
+          <p class="eyebrow">Creator workspace</p>
           <h1>Creator Compass Lite</h1>
-          <p class="lede">Steer creative projects with visible priorities, friction, and momentum.</p>
+          <p class="lede">Track creator projects with audience, next move, momentum, and review timing so the best work keeps moving.</p>
         </div>
         <div class="actions">
           <button class="btn" data-action="import">Import</button>
           <button class="btn" data-action="export">Export</button>
-          <button class="btn btn-primary" data-action="new">New project</button>
+          <button class="btn btn-primary" data-action="new">New creator project</button>
           <input id="import-file" type="file" accept=".json,application/json" hidden />
         </div>
       </header>
 
       <section class="hero card">
         <div>
-          <p class="eyebrow">Projects board</p>
+          <p class="eyebrow">Creator compass board</p>
           <h2 data-role="board-title"></h2>
           <p data-role="board-subtitle"></p>
         </div>
-        <p class="accent">Creative work needs direction just as much as inspiration.</p>
+        <p class="accent">Creative work compounds better when momentum, audience, and the next move stay visible on one compass.</p>
       </section>
 
       <section class="stats" data-role="stats"></section>
+      <section class="insights" data-role="insights"></section>
 
       <section class="controls card">
         <label>
           <span>Search</span>
-          <input type="search" data-field="search" placeholder="Search projects..." />
+          <input type="search" data-field="search" placeholder="Search creator projects, notes, and next steps..." />
         </label>
         <label>
           <span>Project type</span>
@@ -54,14 +55,19 @@
         <article class="card list-panel">
           <div class="panel-head">
             <div>
-              <strong>Projects</strong>
-              <p>Sorted by signal minus friction.</p>
+              <strong>Creator projects</strong>
+              <p>Steer creative projects with visible priorities, friction, and momentum.</p>
             </div>
             <span class="chip" data-role="count"></span>
           </div>
           <div class="list" data-role="list"></div>
         </article>
         <article class="card editor-panel" data-role="editor"></article>
+      </section>
+
+      <section class="secondary">
+        <article class="card secondary-panel" data-role="secondary-primary"></article>
+        <article class="card secondary-panel" data-role="secondary-secondary"></article>
       </section>
     </div>
     <script type="module" src="./js/main.js"></script>

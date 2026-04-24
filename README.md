@@ -4,45 +4,37 @@ Steer creative projects with visible priorities, friction, and momentum.
 
 ![Creator Compass Lite preview](docs/preview.svg)
 
-Creator Compass Lite is a small local-first planning tool for solo builders, operators, and creative teams who want a cleaner way to manage projects. Add items, score the signal, track the friction, and keep the strongest opportunities visible without needing a backend or build step.
+Creator Compass Lite is a local-first workspace for founders, operators, and solo builders who want a cleaner way to manage creator projects. It keeps momentum, audience, next move, and review timing visible so the right things move forward with less drift.
 
-## Features
+## What it does
 
-- Local-first persistence with `localStorage`
-- Search and filter controls
-- Ranked list sorted by signal minus friction
-- Inline editor for title, notes, type, status, score, and effort
-- Import/export JSON backups
-- Re-seed action for resetting the sample board
-- Keyboard shortcuts: `N` for new, `/` for search
-- No build tooling, just open in a browser
+- ranks creator projects by leverage, momentum, timing, and friction
+- tracks **audience**, **next move**, **review date**, and **momentum** for each creator project
+- highlights the best current bet, the next review slot, and the strongest signal on the board
+- renders a dedicated queue plus a category mix snapshot beneath the main board
+- saves locally in the browser with JSON import/export backups
+- quick action: **Go active**
+- quick action: **Raise momentum**
+- quick action: **Mark published**
+
+## Why it feels different
+
+Creator Compass Lite is not just a generic list. It is shaped around the real workflow behind creator projects, so the board helps you decide what matters next instead of simply storing records.
 
 ## Quick start
 
 ```bash
-git clone https://github.com/<you>/creator-compass-lite.git
+git clone https://github.com/get2salam/creator-compass-lite.git
 cd creator-compass-lite
 python -m http.server 8000
 ```
 
 Then open <http://localhost:8000>.
 
-## Data shape
+## Keyboard shortcuts
 
-```json
-{
-  "boardTitle": "Creator compass",
-  "items": [
-    {
-      "title": "Founder operating essay",
-      "category": "Writing",
-      "state": "Building",
-      "score": 8,
-      "effort": 4
-    }
-  ]
-}
-```
+- `N` creates a new creator project
+- `/` focuses the search box
 
 ## Privacy
 
