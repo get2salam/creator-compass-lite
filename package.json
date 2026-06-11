@@ -1,0 +1,11 @@
+{
+  "name": "creator-compass-lite",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check:app": "node scripts/check-app-contract.mjs",
+    "test": "node --test scripts/check-backup.test.mjs",
+    "verify": "npm run check:app && npm test"
+  }
+}

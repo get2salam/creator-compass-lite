@@ -58,6 +58,19 @@ cleanly with shell pipelines and CI.
 Run `node --test scripts/check-backup.test.mjs` to execute the bundled
 `node:test` suite that exercises the validator.
 
+## Local verification
+
+This repo has a dependency-free verification command for CI and local review:
+
+```bash
+npm run verify
+```
+
+It checks that `index.html` still wires the roles, fields, import/export controls,
+stylesheet, and module script required by `js/main.js`, then runs the backup
+validator test suite. Use `npm run check:app` when you only want the static app
+contract check.
+
 ## License
 
 MIT
