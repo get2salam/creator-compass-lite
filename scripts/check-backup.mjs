@@ -16,6 +16,30 @@ const ITEM_FIELDS = {
   metric: 'number',
 };
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+const MAX_ITEMS = 250;
+
+function validateUiState(ui, itemIds) {
+  const errors = [];
+  if (ui === undefined) return errors;
+  if (ui === null || typeof ui !== 'object' || Array.isArray(ui)) {
+    return ['ui must be an object when present'];
+  }
+
+  for (const field of ['search', 'category', 'status']) {
+    if (ui[field] !== undefined && typeof ui[field] !== 'string') {
+      errors.push(`ui.${field} must be a string when present`);
+    }
+  }
+
+  if (ui.selectedId !== undefined && ui.selectedId !== null && typeof ui.selectedId !== 'string') {
+    errors.push('ui.selectedId must be a string or null when present');
+  }
+  if (typeof ui.selectedId === 'string' && ui.selectedId !== '' && !itemIds.has(ui.selectedId)) {
+    errors.push('ui.selectedId must match an existing item id');
+  }
+
+  return errors;
+}
 
 export function validateBackup(data) {
   const errors = [];
@@ -28,6 +52,9 @@ export function validateBackup(data) {
   if (!Array.isArray(data.items)) {
     errors.push('items must be an array');
     return { ok: errors.length === 0, errors };
+  }
+  if (data.items.length > MAX_ITEMS) {
+    errors.push(`items must contain ${MAX_ITEMS} or fewer entries (got ${data.items.length})`);
   }
 
   const seenIds = new Set();
@@ -61,6 +88,8 @@ export function validateBackup(data) {
       seenIds.add(item.id);
     }
   });
+
+  errors.push(...validateUiState(data.ui, seenIds));
 
   return { ok: errors.length === 0, errors };
 }

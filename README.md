@@ -51,9 +51,9 @@ node scripts/check-backup.mjs path/to/backup.json
 ```
 
 The script exits `0` when the file is valid, `1` with a list of specific
-problems (wrong schema, out-of-range scores, malformed dates, duplicate ids) when
-it is not, and `2` when the path is missing or unreadable, so it composes
-cleanly with shell pipelines and CI.
+problems (wrong schema, oversized item lists, out-of-range scores, malformed
+dates, duplicate ids, or broken saved UI state) when it is not, and `2` when the
+path is missing or unreadable, so it composes cleanly with shell pipelines and CI.
 
 Run `node --test scripts/check-backup.test.mjs` to execute the bundled
 `node:test` suite that exercises the validator.

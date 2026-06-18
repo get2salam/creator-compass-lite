@@ -84,3 +84,25 @@ test('reports a clear error when items is missing', () => {
   assert.equal(result.ok, false);
   assert.ok(result.errors.some((message) => message.includes('items must be an array')));
 });
+
+test('rejects oversized backups before they slow down local review', () => {
+  const items = Array.from({ length: 251 }, (_, index) => makeItem({ id: `creator-compass-lite_${index}` }));
+  const result = validateBackup(makeBackup({ items }));
+
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some((message) => message.includes('250 or fewer')));
+});
+
+test('rejects malformed saved UI state', () => {
+  const result = validateBackup(makeBackup({ ui: { search: [], category: 'all', status: 'all', selectedId: null } }));
+
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some((message) => message.includes('ui.search must be a string')));
+});
+
+test('rejects selected UI ids that do not exist in the backup', () => {
+  const result = validateBackup(makeBackup({ ui: { search: '', category: 'all', status: 'all', selectedId: 'missing-id' } }));
+
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some((message) => message.includes('selectedId must match')));
+});
