@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "audit:board": "node scripts/score-board.mjs",
     "check:app": "node scripts/check-app-contract.mjs",
     "test": "node --test scripts/*.test.mjs",
     "verify": "npm run check:app && npm test"

@@ -58,6 +58,20 @@ path is missing or unreadable, so it composes cleanly with shell pipelines and C
 Run `node --test scripts/check-backup.test.mjs` to execute the bundled
 `node:test` suite that exercises the validator.
 
+## Scoring board focus
+
+For a quick deterministic audit of a saved board, run:
+
+```bash
+npm run audit:board -- path/to/backup.json --today 2026-04-24
+```
+
+The scorer validates the backup, grades the active creator queue from 0-100,
+and prints concrete findings for overdue reviews, weak momentum on high-upside
+projects, or friction-heavy work. It exits non-zero when the backup is invalid
+or the score falls below 70, which makes it useful for lightweight agent/eval
+checks before restoring or sharing a board.
+
 ## Local verification
 
 This repo has a dependency-free verification command for CI and local review:
